@@ -19,7 +19,7 @@ export default class Ball {
     }
 
     draw(ctx: CanvasRenderingContext2D) {
-        ctx.drawImage(this.image, 10, 10, 16, 16)
+        ctx.drawImage(this.image, this.position.x, this.position.y, 16, 16)
     }
 
     update(deltaTime) {
