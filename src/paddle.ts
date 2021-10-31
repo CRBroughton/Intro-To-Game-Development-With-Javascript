@@ -1,4 +1,4 @@
-import { Position } from './interfaces/Position.js'
+import Position from './interfaces/Position.js'
 
 export default class Paddle {
 
@@ -41,7 +41,6 @@ export default class Paddle {
     }
 
     update(deltaTime: number) {
-        if(!deltaTime) return
         this.position.x += this.speed;
 
         if(this.position.x < 0) this.position.x = 0;
