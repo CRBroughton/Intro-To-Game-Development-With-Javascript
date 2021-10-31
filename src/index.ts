@@ -32,4 +32,4 @@ function gameLoop(timeStamp: number) {
 
 }
 
-gameLoop()
+requestAnimationFrame(gameLoop)
