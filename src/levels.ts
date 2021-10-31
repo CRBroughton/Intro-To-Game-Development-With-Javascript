@@ -1,9 +1,9 @@
 import Brick from './brick.js'
 
-export function buildLevel(game: any, level: any[]) {
+export function buildLevel(game: any, level: number[][]) {
     let bricks: Brick[] = []
 
-    level.forEach((row, rowIndex) => {
+    level.forEach((row: number[], rowIndex: number) => {
         row.forEach((brick: number, brickIndex: number) => {
             if(brick === 1) {
                 let position = {
