@@ -20,4 +20,9 @@ export default class Paddle {
         ctx.fillStyle = '#0f0'
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
+
+    update(deltaTime: number) {
+        if(!deltaTime) return
+        this.position.x += 5 / deltaTime;
+    }
 }
