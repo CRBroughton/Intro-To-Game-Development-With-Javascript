@@ -14,6 +14,10 @@ new InputHandler(paddle)
 
 let lastTime: number = 0;
 
+// images
+
+let imgBall = <HTMLImageElement>document.getElementById('img_ball')!
+
 function gameLoop(timeStamp: number) {
 
     let deltaTime = timeStamp - lastTime;
@@ -23,6 +27,8 @@ function gameLoop(timeStamp: number) {
     ctx.clearRect(0, 0, 800, 600)
     paddle.update(deltaTime);
     paddle.draw(ctx);
+
+    ctx.drawImage(imgBall, 10, 10)
 
     requestAnimationFrame(gameLoop)
 
