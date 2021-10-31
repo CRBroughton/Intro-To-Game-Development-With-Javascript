@@ -3,13 +3,14 @@ import InputHandler from './input.js'
 import Ball from './ball.js'
 import Brick from './brick.js'
 
-import { buildLevel, level1 } from './levels.js'
+import { buildLevel, level1, level2 } from './levels.js'
 
 const GAMESTATE = {
     PAUSED: 0,
     RUNNING: 1,
     MENU: 2,
-    GAMEOVER: 3
+    GAMEOVER: 3,
+    NEWLEVEL: 4
 }
 
 
@@ -20,7 +21,10 @@ export default class Game {
     paddle!: Paddle;
     ball!: Ball;
     lives: number;
+    levels: number[][][];
+    currentLevel: number;
     gameObjects: (Paddle | Ball | Brick | markedForDeletion) [] = [];
+    bricks: Brick[] = [];
     constructor(gameWidth: number, gameHeight: number) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -28,6 +32,9 @@ export default class Game {
         this.paddle = new Paddle(this);
         this.ball = new Ball(this);
         this.gameObjects = [];
+        this.bricks = [];
+        this.levels = [level1, level2]
+        this.currentLevel = 0
         this.lives = 3;
 
         new InputHandler(this.paddle, this)
@@ -35,13 +42,12 @@ export default class Game {
     }
 
     start() {
-        if(this.gamestate !== GAMESTATE.MENU) return
-        let bricks = buildLevel(this, level1)
-
+        if(this.gamestate !== GAMESTATE.MENU && this.gamestate !== GAMESTATE.NEWLEVEL) return
+        this.bricks = buildLevel(this, this.levels[this.currentLevel])
+        this.ball.reset()
         this.gameObjects = [
             this.ball,
             this.paddle,
-           ...bricks
         ]
 
         this.gamestate = GAMESTATE.RUNNING
@@ -56,13 +62,19 @@ export default class Game {
            this.gamestate === GAMESTATE.GAMEOVER)
             return;
 
-        this.gameObjects.forEach(object => object.update(deltaTime));
+        if(this.bricks.length === 0) {
+            this.currentLevel++
+            this.gamestate = GAMESTATE.NEWLEVEL;
+            this.start();
+        }
 
-        this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion)
+        [...this.gameObjects, ...this.bricks].forEach(brick => brick.update(deltaTime));
+
+        this.bricks = this.bricks.filter(brick => !brick.markedForDeletion)
     }
 
     draw(ctx: CanvasRenderingContext2D) {
-        this.gameObjects.forEach(object => object.draw(ctx));
+        [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
 
         if(this.gamestate === GAMESTATE.PAUSED) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight)
