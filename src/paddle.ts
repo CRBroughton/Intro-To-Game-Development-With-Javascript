@@ -31,6 +31,10 @@ export default class Paddle {
         this.speed = this.maxSpeed;
     }
 
+    stop() {
+        this.speed = 0;
+    }
+
     draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = '#0f0'
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);

@@ -16,5 +16,22 @@ export default class InputHandler {
                     break;
             }
         })
+
+        document.addEventListener('keyup', event => {
+            switch(event.code) {
+                case "KeyA":
+                    paddle.stop()
+                    break;
+                case "ArrowLeft":
+                    paddle.stop()
+                    break;
+                case "KeyD":
+                    paddle.stop()
+                    break;
+                case "ArrowRight":
+                    paddle.stop()
+                    break;
+            }
+        })
     }
 }
