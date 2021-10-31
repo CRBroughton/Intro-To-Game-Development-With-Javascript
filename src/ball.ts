@@ -9,11 +9,14 @@ export default class Ball {
     size: number;
     gameWidth: number;
     gameHeight: number;
-
+    game: any;
     constructor(game: any) {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.image = <HTMLImageElement>document.getElementById('img_ball')!
+
+        this.game = game
+
         this.position = {
             x: 10,
             y: 10,
@@ -23,7 +26,7 @@ export default class Ball {
             y: 2,
         }
         this.size = 16
-    }
+    }d
 
     draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.size, this.size)
@@ -38,6 +41,20 @@ export default class Ball {
         }
         if(this.position.y + this.size > this.gameHeight || this.position.y < 0) {
             this.speed.y = -this.speed.y;
-        }  
+        }
+        
+        // Check collision with paddle
+
+        let bottomOfBall = this.position.y + this.size;
+        let topOfPaddle = this.game.paddle.position.y;
+        let leftSideOfPaddle = this.game.paddle.position.x;
+        let rightSideOfPaddle = this.game.paddle.position.x + this.game.paddle.width;
+
+        if(bottomOfBall >= topOfPaddle
+           && this.position.x >= leftSideOfPaddle
+           && this.position.x + this.size <= rightSideOfPaddle) {
+            this.speed.y = -this.speed.y;
+            this.position.y = this.game.paddle.position.y - this.size;
+        }
     }
 }
