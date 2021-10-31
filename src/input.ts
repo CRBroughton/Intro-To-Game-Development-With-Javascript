@@ -1,5 +1,5 @@
 export default class InputHandler {
-    constructor(paddle: { moveLeft: () => void; moveRight: () => void; }) {
+    constructor(paddle) {
         document.addEventListener('keydown', event => {
             switch(event.code) {
                 case "KeyA":
@@ -20,16 +20,20 @@ export default class InputHandler {
         document.addEventListener('keyup', event => {
             switch(event.code) {
                 case "KeyA":
-                    paddle.stop()
+                    if(paddle.speed < 0)
+                        paddle.stop()
                     break;
                 case "ArrowLeft":
-                    paddle.stop()
+                    if(paddle.speed < 0)
+                        paddle.stop()
                     break;
                 case "KeyD":
-                    paddle.stop()
+                    if(paddle.speed > 0)
+                        paddle.stop()
                     break;
                 case "ArrowRight":
-                    paddle.stop()
+                    if(paddle.speed > 0)
+                        paddle.stop()
                     break;
             }
         })
