@@ -7,7 +7,12 @@ export default class Ball {
     speed: Speed;
     position: Position;
     size: number;
-    constructor() {
+    gameWidth: number;
+    gameHeight: number;
+    
+    constructor(gameWidth: number, gameHeight: number) {
+        this.gameWidth = gameWidth;
+        this.gameHeight = gameHeight;
         this.image = <HTMLImageElement>document.getElementById('img_ball')!
         this.position = {
             x: 10,
@@ -24,7 +29,7 @@ export default class Ball {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.size, this.size)
     }
 
-    update(deltaTime) {
+    update(deltaTime: number) {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
     }
