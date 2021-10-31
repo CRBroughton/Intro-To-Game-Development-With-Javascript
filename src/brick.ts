@@ -6,7 +6,7 @@ export default class Brick {
     width: number;
     height: number;
     position: object;
-    constructor(game: any, position: number[]) {
+    constructor(game: any, position: object) {
             this.gameWidth = game.gameWidth;
             this.gameHeight = game.gameHeight;
             this.image = <HTMLImageElement>document.getElementById('img_brick')!
