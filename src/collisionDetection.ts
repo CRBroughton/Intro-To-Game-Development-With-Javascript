@@ -1,4 +1,7 @@
-export function detectCollision(ball, gameObject) {
+import Ball from './ball.js'
+import GameObject from './interfaces/GameObject'
+
+export function detectCollision(ball: Ball, gameObject: GameObject) {
     let bottomOfBall = ball.position.y + ball.size;
     let topOfBall = ball.position.y;
 
