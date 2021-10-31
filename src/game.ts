@@ -11,7 +11,7 @@ export default class Game {
     gameHeight: number;
     paddle!: Paddle;
     ball!: Ball;
-    gameObjects: (Paddle | Ball | Brick) [] = [];
+    gameObjects: (Paddle | Ball | Brick | markedForDeletion) [] = [];
     constructor(gameWidth: number, gameHeight: number) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -33,6 +33,8 @@ export default class Game {
 
     update(deltaTime: number) {
         this.gameObjects.forEach(object => object.update(deltaTime));
+
+        this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion)
     }
 
     draw(ctx: CanvasRenderingContext2D) {
