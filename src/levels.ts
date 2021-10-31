@@ -20,7 +20,11 @@ export function buildLevel(game: any, level: number[][]) {
 
 export const level1 = [
     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+]
+
+export const level2 = [
+    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
 ]

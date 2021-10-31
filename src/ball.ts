@@ -18,6 +18,11 @@ export default class Ball {
 
         this.game = game
 
+        this.size = 16
+        this.reset()
+    }
+
+    reset() {
         this.position = {
             x: 10,
             y: 400,
@@ -26,7 +31,6 @@ export default class Ball {
             x: 2,
             y: -2,
         }
-        this.size = 16
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -40,8 +44,14 @@ export default class Ball {
         if(this.position.x + this.size > this.gameWidth || this.position.x < 0) {
             this.speed.x = -this.speed.x;
         }
-        if(this.position.y + this.size > this.gameHeight || this.position.y < 0) {
+        if(this.position.y < 0) {
             this.speed.y = -this.speed.y;
+        }
+
+        // bottom of the game / game over
+        if (this.position.y + this.size > this.gameHeight) {
+            this.game.lives--
+            this.reset()
         }
 
         if(detectCollision(this, this.game.paddle)) {
