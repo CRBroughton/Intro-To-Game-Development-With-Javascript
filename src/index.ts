@@ -4,5 +4,12 @@ let canvas = <HTMLCanvasElement> document.getElementById("gameScreen");
 
 let ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
 
+const GAME_WIDTH = 800;
+const GAME_HEIGHT= 600;
+
 // Clears the canvas after every frame
 ctx.clearRect(0, 0, 800, 600)
+
+let paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
+
+paddle.draw(ctx)
