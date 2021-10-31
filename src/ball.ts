@@ -16,6 +16,9 @@ export default class Ball {
         this.gameHeight = game.gameHeight;
         this.image = <HTMLImageElement>document.getElementById('img_ball')!
 
+        this.position = <Position>{};
+        this.speed = <Speed>{};
+
         this.game = game
 
         this.size = 16

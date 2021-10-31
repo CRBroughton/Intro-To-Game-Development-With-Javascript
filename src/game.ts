@@ -23,7 +23,8 @@ export default class Game {
     lives: number;
     levels: number[][][];
     currentLevel: number;
-    gameObjects: (Paddle | Ball | Brick | markedForDeletion) [] = [];
+    markedForDeletion: boolean;
+    gameObjects: (Paddle | Ball | Brick) [] = [];
     bricks: Brick[] = [];
     constructor(gameWidth: number, gameHeight: number) {
         this.gameWidth = gameWidth;
@@ -36,6 +37,7 @@ export default class Game {
         this.levels = [level1, level2]
         this.currentLevel = 0
         this.lives = 3;
+        this.markedForDeletion = <boolean> false;
 
         new InputHandler(this.paddle, this)
 
