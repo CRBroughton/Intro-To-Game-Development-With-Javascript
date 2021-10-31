@@ -1,5 +1,7 @@
+import paddle from "./paddle";
+
 export default class InputHandler {
-    constructor(paddle, game) {
+    constructor(paddle: paddle, game: any) {
         document.addEventListener('keydown', event => {
             switch(event.code) {
                 case "KeyA":

@@ -1,13 +1,14 @@
 import { detectCollision } from './collisionDetection.js'
+import Position from './interfaces/Position.js'
 
 export default class Brick {
     image: HTMLImageElement;
     game: any;
     width: number;
     height: number;
-    position: object;
+    position: Position;
     markedForDeletion: boolean;
-    constructor(game: any, position: object) {
+    constructor(game: any, position: Position) {
             this.image = <HTMLImageElement>document.getElementById('img_brick')!
     
             this.game = game
