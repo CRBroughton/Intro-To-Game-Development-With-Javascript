@@ -1,20 +1,18 @@
 export default class InputHandler {
-    constructor() {
+    constructor(paddle: { moveLeft: () => void; moveRight: () => void; }) {
         document.addEventListener('keydown', event => {
-            console.log(event.code)
-
             switch(event.code) {
                 case "KeyA":
-                    console.log('left')
+                    paddle.moveLeft()
                     break;
                 case "ArrowLeft":
-                    console.log('left')
+                    paddle.moveLeft()
                     break;
                 case "KeyD":
-                    console.log('right')
+                    paddle.moveRight()
                     break;
                 case "ArrowRight":
-                    console.log('right')
+                    paddle.moveRight()
                     break;
             }
         })
