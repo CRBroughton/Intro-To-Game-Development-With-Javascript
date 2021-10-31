@@ -1,3 +1,5 @@
+import Position from './interfaces/Position.js'
+
 export default class Ball {
     image: HTMLImageElement
     constructor() {
