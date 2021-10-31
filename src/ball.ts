@@ -6,6 +6,7 @@ export default class Ball {
     image: HTMLImageElement;
     speed: Speed;
     position: Position;
+    size: number;
     constructor() {
         this.image = <HTMLImageElement>document.getElementById('img_ball')!
         this.position = {
@@ -16,10 +17,11 @@ export default class Ball {
             x: 2,
             y: 2,
         }
+        this.size = 16
     }
 
     draw(ctx: CanvasRenderingContext2D) {
-        ctx.drawImage(this.image, this.position.x, this.position.y, 16, 16)
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.size, this.size)
     }
 
     update(deltaTime) {
