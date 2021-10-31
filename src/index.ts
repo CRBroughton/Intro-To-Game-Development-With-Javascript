@@ -1,11 +1,15 @@
+import Paddle from './paddle.js'
+
 let canvas = <HTMLCanvasElement> document.getElementById("gameScreen");
 
 let ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
 
+const GAME_WIDTH = 800;
+const GAME_HEIGHT= 600;
+
+// Clears the canvas after every frame
 ctx.clearRect(0, 0, 800, 600)
 
-ctx.fillStyle = <string> '#f00';
-ctx.fillRect(20, 20, 100, 100);
+let paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
 
-ctx.fillStyle = <string> '#00f';
-ctx.fillRect(200, 200, 50, 50);
+paddle.draw(ctx)
