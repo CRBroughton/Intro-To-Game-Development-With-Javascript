@@ -1,4 +1,4 @@
-import { Position } from './interfaces/Position.js'
+import Position from './interfaces/Position.js'
 
 export default class Paddle {
 
