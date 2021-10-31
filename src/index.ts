@@ -1,3 +1,5 @@
+import Paddle from './paddle.js'
+
 let canvas = <HTMLCanvasElement> document.getElementById("gameScreen");
 
 let ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
