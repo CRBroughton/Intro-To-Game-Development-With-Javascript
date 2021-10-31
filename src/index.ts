@@ -8,7 +8,6 @@ let ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
 let lastTime: number = 0;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start()
 
 function gameLoop(timeStamp: number) {
 
