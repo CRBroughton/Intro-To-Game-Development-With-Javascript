@@ -28,7 +28,7 @@ function gameLoop(timeStamp: number) {
     paddle.update(deltaTime);
     paddle.draw(ctx);
 
-    ctx.drawImage(imgBall, 10, 10)
+    ctx.drawImage(imgBall, 10, 10, 16, 16)
 
     requestAnimationFrame(gameLoop)
 
