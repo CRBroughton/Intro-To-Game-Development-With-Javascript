@@ -26,7 +26,7 @@ export default class Ball {
             y: 2,
         }
         this.size = 16
-    }d
+    }
 
     draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.size, this.size)
