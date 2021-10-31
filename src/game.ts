@@ -9,7 +9,7 @@ export default class Game {
     gameHeight: number;
     paddle!: Paddle;
     ball!: Ball;
-    gameObjects: (Paddle | Ball) [] = [];
+    gameObjects: (Paddle | Ball | Brick) [] = [];
     constructor(gameWidth: number, gameHeight: number) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
