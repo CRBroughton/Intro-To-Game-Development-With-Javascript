@@ -9,7 +9,7 @@ export default class Ball {
     size: number;
     gameWidth: number;
     gameHeight: number;
-    
+
     constructor(gameWidth: number, gameHeight: number) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -32,5 +32,12 @@ export default class Ball {
     update(deltaTime: number) {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
+
+        if(this.position.x > this.gameWidth || this.position.x < 0) {
+            this.speed.x = -this.speed.x;
+        }
+        if(this.position.y > this.gameHeight || this.position.y < 0) {
+            this.speed.y = -this.speed.y;
+        }  
     }
 }
