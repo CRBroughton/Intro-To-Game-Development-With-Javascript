@@ -16,7 +16,8 @@ export default class Paddle {
         }
     }
 
-    draw(ctx: { fillRect: (arg0: number, arg1: number, arg2: number, arg3: number) => void; }) {
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = '#0f0'
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
